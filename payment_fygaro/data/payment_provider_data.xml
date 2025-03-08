@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="payment_provider_fygaro" model="payment.provider">    
+		<field name="name">Fygaro</field>        
+        <field name="image_128" type="base64" file="payment_fygaro/static/description/icon.png"/>
+        <field name="code">fygaro</field>
+        <field name="redirect_form_view_id" ref="redirect_form"/>       
+        <field name="module_id" ref="base.module_payment_fygaro"/>        
+		<field name="payment_method_ids"
+               eval="[Command.set([                         
+                         ref('payment.payment_method_card'),                         
+                         ref('payment.payment_method_credit')
+                     ])]"
+        />
+		<field name="company_id" ref="base.main_company"/>		
+    </record>
+</odoo>
