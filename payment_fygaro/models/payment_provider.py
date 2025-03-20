@@ -57,7 +57,7 @@ class PaymentProvider(models.Model):
         order_amt = data['amount']
         order_no = str(data['reference'])                     
         currency = str(data['currency'])     
-        pay_url = data['base_url']+FygaroController._payment_url
+        pay_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')+FygaroController._payment_url
         payload = {
             "amount": order_amt,
             "custom_reference": str(order_no),
